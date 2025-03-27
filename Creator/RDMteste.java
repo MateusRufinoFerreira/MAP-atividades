@@ -18,7 +18,14 @@ public class RDMteste {
 
     @Test
     public void testRegistroMatricula() {
-        assertTrue(rdm.registrarMatricula(aluno, disciplina).containsKey(aluno));
-        assertTrue(rdm.registrarMatricula(aluno, disciplina).get(aluno).contains(disciplina));
+        assertTrue(rdm.listarDisciplinasDoAluno(aluno).contains(disciplina));
+    }
+
+    @Test
+    public void testListarDisciplinasDoAluno() {
+        
+    	ArrayList<Disciplina> disciplinasAluno = rdm.listarDisciplinasDoAluno(aluno);
+        assertEquals(1, disciplinasAluno.size());
+        assertTrue(disciplinasAluno.contains(disciplina));
     }
 }
