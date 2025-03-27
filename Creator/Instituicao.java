@@ -21,4 +21,8 @@ public class Instituicao {
     public void listarDisciplinasDeAluno(Aluno aluno) {
         rdm.listarDisciplinasDoAluno(aluno);
     }
+    
+    public List<Turma> listarTurmas() {
+        return controleAcademico.getTurmas();
+    }
 }
