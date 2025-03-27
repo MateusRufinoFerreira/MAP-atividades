@@ -1,4 +1,3 @@
-<<<<<<<< HEAD:src/main/java/org/example/Instituicao.java
 package org.example;
 
 import java.util.List;
