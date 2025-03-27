@@ -1,24 +1,39 @@
-import java.util.HashMap;
 import java.util.ArrayList;
 
 public class RDM {
-    private HashMap<Aluno, ArrayList<Disciplina>> matriculas;
+    private ArrayList<Aluno> alunos;
+    
+    private ArrayList<ArrayList<Disciplina>> disciplinas;
 
     public RDM() {
-        this.matriculas = new HashMap<>();
+        this.alunos = new ArrayList<>();
+        this.disciplinas = new ArrayList<>();
     }
 
-    public HashMap<Aluno, ArrayList<Disciplina>> registrarMatricula(Aluno aluno, Disciplina disciplina) {
-        matriculas.computeIfAbsent(aluno, k -> new ArrayList<>()).add(disciplina);
-        return matriculas;
-    }
-
-    public ArrayList<Disciplina> listarDisciplinasDoAluno(Aluno aluno) {
-        ArrayList<Disciplina> disciplinas = matriculas.get(aluno);
-        if (disciplinas == null) {
-            disciplinas = new ArrayList<>();
+    
+    public void registrarMatricula(Aluno aluno, Disciplina disciplina) {
+        
+    	int index = alunos.indexOf(aluno);
+        
+        if (index == -1) {
+            
+        	alunos.add(aluno);
+            ArrayList<Disciplina> listaDisciplinas = new ArrayList<>();
+            listaDisciplinas.add(disciplina);
+            disciplinas.add(listaDisciplinas);
+        } else {
+            
+        	disciplinas.get(index).add(disciplina);
         }
-        return disciplinas;
     }
 
+    
+    public ArrayList<Disciplina> listarDisciplinasDoAluno(Aluno aluno) {
+        int index = alunos.indexOf(aluno);
+        if (index != -1) {
+            return disciplinas.get(index);
+        } else {
+            return new ArrayList<>(); 
+            }
+    }
 }
